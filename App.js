@@ -4,7 +4,8 @@ import { StyleSheet,
    SafeAreaView,
    ScrollView,
   TouchableHighlight,
-TouchableOpacity } from 'react-native';
+TouchableOpacity,
+TextInput } from 'react-native';
 import { useState,useEffect } from 'react';
 
 
@@ -17,7 +18,12 @@ export default function App() {
   return (
     <SafeAreaView style={styles.mainview}>
       <ScrollView>
-        
+        <TextInput placeholder='Adınız'>
+
+        </TextInput>
+        <TextInput placeholder='Soyadınız'>
+
+        </TextInput>
         <TouchableOpacity activeOpacity={.7} onPress={tikla} style={styles.btn}>
           <Text >Bana {numara} Kere Tıkladın</Text>
         </TouchableOpacity>
