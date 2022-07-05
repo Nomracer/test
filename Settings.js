@@ -8,7 +8,6 @@ import { Text,
     import * as React from 'react';
     import { useContext } from "react";
     import AppContext from './context/AppContext'
-    import BookList from './components/BookList'
 
 export default function Login(){
     const data=useContext(AppContext)
