@@ -1,0 +1,44 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Users {
+  id           Int        @id @default(autoincrement())
+  okulNo       Int        @unique
+  sifre        String     
+  kiralananlar KiraKitap?
+}
+
+model KiraKitap {
+  id      Int       @id @default(autoincrement())
+  user    Users     @relation(fields: [userId], references: [id])
+  userId  Int       @unique
+  kitap   Kitaplar? @relation(fields: [kitapId], references: [id])
+  kitapId Int       @unique
+  time    Int       @default(0)
+}
+
+model Kitaplar {
+  id          Int         @id @default(autoincrement())
+  adi         String
+  basimYili   String
+  adet        Int
+  kalanKitap  Int
+  yazar       String
+  sayfaSayisi Int
+  kategori    String
+  KiraKitap   KiraKitap[]
+}
+
+model Kategoriler {
+  id           Int    @id @default(autoincrement())
+  kategoriIsmi String
+}
